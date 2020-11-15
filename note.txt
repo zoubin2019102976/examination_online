@@ -1,0 +1,13 @@
+如果远程仓库初始化为空（没有.gitgnore/LICENSE/README.md等文件），可以直接和本地仓库关联
+本地：
+git init
+git add something(某些文件或全部文件: *)
+git commit -m "some message"
+git branch -M main (注意：现在是main而不是master)
+git remote add origin https://github.com/zoubin2019102976/examination_online.git (关联远程仓库)
+git push -u origin main
+
+但是如果该远程仓库不空：
+则在push之前，需要：
+git pull --rebase origin main (合并远程仓库到本地)
+git push -u origin master
