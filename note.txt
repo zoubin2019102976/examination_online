@@ -12,3 +12,6 @@ git push -u origin main
 则在push之前，需要：
 git pull --rebase origin main (合并远程仓库到本地)
 git push -u origin master
+
+注意：如果是从远程克隆过来的仓库，在push时，需要注意是master还是main
+有的是main，有的是master
