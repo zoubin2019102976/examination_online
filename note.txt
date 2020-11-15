@@ -20,3 +20,6 @@ git push -u origin master
 同时，在此场景下，进行push操作时，不用输入账号和密码（与场景1有区别）
 
 3.HEAD指向的并不是真的提交，而是当前分支，当前分支指向的是提交.
+
+4.删除分支：
+	git branch -d name_of_branch
