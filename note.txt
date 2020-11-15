@@ -23,3 +23,9 @@ git push -u origin master
 
 4.删除分支：
 	git branch -d name_of_branch
+
+5.有时，分支之间可能会出现冲突而无法合并，比如两个分支都存在更新，此时需要编辑发生冲突的文件位置进行修改，再提交合并即可。
+ (1)git status: 查看冲突位置
+ (2)编辑冲突文件冲突位置
+ (3)重新提交，更新
+ (4)git log --graph --pretty=oneline --abbrev-commit  //图形化分支合并状态
