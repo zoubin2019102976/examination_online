@@ -1,4 +1,4 @@
-场景: 将远程仓库和本地仓库关联,先有本地仓库，再有远程仓库
+1.场景: 将远程仓库和本地仓库关联,先有本地仓库，再有远程仓库
 如果远程仓库初始化为空（没有.gitgnore/LICENSE/README.md等文件），可以直接和本地仓库关联
 本地：
 git init
@@ -12,6 +12,9 @@ git push -u origin main
 则在push之前，需要：
 git pull --rebase origin main (合并远程仓库到本地)
 git push -u origin master
+原因：因为此时远程仓库有本地没有的文件，本地不和远程同步，此时本地push会出现冲突性错误。所以需要将远程仓库与本地仓库进行一次合并同步。
 
-注意：如果是从远程克隆过来的仓库，在push时，需要注意是master还是main
+
+2.场景：如果是从远程克隆过来的仓库，在push时，需要注意是master还是main
 有的是main，有的是master
+同时，在此场景下，进行push操作时，不用输入账号和密码（与场景1有区别）
