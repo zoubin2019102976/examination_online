@@ -21,4 +21,5 @@ git push -u origin master
 
 3.HEAD指向的并不是真的提交，而是当前分支，当前分支指向的是提交.
 
-test a line
+4.删除分支：
+	git branch -d name_of_branch
