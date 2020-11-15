@@ -30,4 +30,6 @@ git push -u origin master
  (3)重新提交，更新
  (4)git log --graph --pretty=oneline --abbrev-commit  //图形化分支合并状态
 
-//branch dev
+6.如果合并分支使用Fast-forward模式，当删除分支时，会丢失分支信息。此时
+merge操作可以加 --no-ff参数，在merge时会生成一个新的commit,这样，从分支
+历史上就可以看出分支信息。
