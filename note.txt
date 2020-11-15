@@ -21,4 +21,4 @@ git push -u origin master
 
 3.HEAD指向的并不是真的提交，而是当前分支，当前分支指向的是提交.
 
-test
+test a line
