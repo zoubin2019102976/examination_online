@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login This System</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div>
+        <form method="post" th:action="@{/login}" th:object="${studentForRegister}">
+            <label>姓名: </label>
+            <input type="text" th:field="*{stuName}">
+            <span class="validationError"
+                    th:if="${#fields.hasErrors('stuName')}"
+                    th:errors="*{stuName}"></span><br>
+
+            <label>学号: </label>
+            <input type="text" th:field="*{stuNum}">
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('stuNum')}"
+                  th:errors="*{stuNum}"></span><br>
+
+            <label>专业: </label>
+            <input type="text" th:field="*{stuSpecialities}">
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('stuSpecialities')}"
+                  th:errors="*{stuSpecialities}"></span><br>
+
+            <label>邮箱: </label>
+            <input type="text" th:field="*{stuEmail}">
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('stuEmail')}"
+                  th:errors="*{stuEmail}"></span><br>
+
+            <label>电话: </label>
+            <input type="text" th:field="*{stuPhone}">
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('stuPhone')}"
+                  th:errors="*{stuPhone}"></span><br>
+
+            <label>密码: </label>
+            <input type="text" th:field="*{password}">
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('password')}"
+                  th:errors="*{password}">
+                    password Error
+                </span><br>
+            <input type="submit" value="提交">
+        </form>
+        <span class="validationError"
+              th:if="${FAIL}"
+              th:text="${FAIL}"></span>
+        <p>业务逻辑,管理员功能</p>
+    </div>
+</body>
+</html>

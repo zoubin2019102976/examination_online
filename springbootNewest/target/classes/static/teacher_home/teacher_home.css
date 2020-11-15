@@ -1,0 +1,33 @@
+.home_top{
+    height: 10%;
+    border: 1px solid #0069d9;
+}
+
+.left_slide_bar_item {
+    margin-top: 10px;
+    border: 1px solid #007bff;
+    background: #007bff;
+    color: #fbfcfc;
+    round-clip: 2;
+}
+
+.home_middle{
+    margin-top: 20px;
+}
+
+div #search_paper_filter{
+    display: none;
+    margin-top:10px;
+    padding:5px;
+    text-align:center;
+    background:#e5eecc;
+    border:solid 1px #c3c3c3;
+}
+
+.main_content{
+    display: none;
+}
+
+.edit_paper_of_topic_button{
+    margin-top: 10px;
+}

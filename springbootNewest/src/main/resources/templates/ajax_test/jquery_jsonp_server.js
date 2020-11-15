@@ -1,0 +1,1 @@
+let cb = request.query.jsonpCallback()

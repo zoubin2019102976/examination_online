@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.nenu.mapper.StuMapper">
+    <resultMap id="selectStudents" type="com.org.nenu.pojo.Student"> <!--在此的id和select中id同名只是我看着方便，无联系-->
+        <id property="stuId" column="stu_id"/>
+        <result property="stuName" column="stu_name" />
+        <result property="stuNum" column="stu_num" />
+        <result property="stuSpecialities" column="stu_specialities" />
+        <result property="stuEmail" column="stu_email" />
+        <result property="stuPhone" column="stu_phone" />
+        <result property="password" column="stu_password" />
+    </resultMap>
+
+    <insert id="insertToStu" parameterType="com.org.nenu.pojo.Student"
+            useGeneratedKeys="true" keyProperty="stuId"> <!--这里的parameterType用的是别名，注意如果要自定义的话，不仅要在yml文件配置，还要去别名类使用@Alias配置别名-->
+        insert into students(stu_name, stu_num, stu_specialities, stu_email, stu_phone, stu_password)
+        value (#{stuName}, #{stuNum}, #{stuSpecialities}, #{stuEmail}, #{stuPhone}, #{password})
+    </insert>
+
+    <select id="selectStudentByStuNum" resultMap="selectStudents">
+        select stu_id, stu_name, stu_num, stu_specialities, stu_email, stu_phone, stu_password
+        from students
+        where stu_num = #{stuNum}
+    </select>
+
+    <select id="selectAllStudents" resultMap="selectStudents">
+        select * from students
+    </select>
+</mapper>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Axios send request of ajax</title>
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.20.0-0/axios.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="../../static/hello.js"></script>
+</head>
+<body>
+    <button>GET</button>
+    <button>POSt</button>
+    <button>AJAX</button>
+
+    <div>
+        <p class="greeting-id">The ID is </p>
+        <p class="greeting-content">The content is </p>
+    </div>
+
+    <script>
+        const btns = document.querySelectorAll('button');
+
+        btns[0].onclick = function () {
+            axios.get('test.json', {
+                params: {
+                    id:100,
+                    vip:7
+                },
+                headers: {
+                    name: 'zoubin',
+                    age: 20
+                }
+            }).then(value => {
+                console.log(value)
+            });
+        }
+
+        btns[1].onclick = function () {
+            axios.post('test.json', {
+                username: 'admin',
+                password: 'admin'
+            },{
+                params: {
+                    id: 200,
+                    vip: 9
+                },
+                headers: {
+                    height: 100,
+                    weight: 180
+                }
+            });
+        }
+
+        btns[2].onclick = function () {
+            axios({
+                method: 'POST',
+                url: 'test.json',
+                params: {
+                    vip: 10,
+                    level: 30
+                },
+                headers: {
+                    a: 300,
+                    b: 500
+                },
+                 data: {
+                    username: 'admin',
+                     password: 'admin'
+                 }
+            }).then(response=>{
+                console.log(response.status);
+                console.log(response.statusText);
+                console.log(response.headers);
+                console.log(response.data)
+            })
+        }
+    </script>
+</body>
+</html>

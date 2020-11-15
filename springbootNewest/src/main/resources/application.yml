@@ -1,0 +1,22 @@
+spring:
+  #mysql database
+  datasource:
+    url: jdbc:mysql://localhost:3306/TACO?useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 3202215930
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #thymeleaf
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+#mybatis frameworl
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.org.nenu.pojo
+
+logging:
+  level:
+    root: INFO
+  file:
+    name: my.log

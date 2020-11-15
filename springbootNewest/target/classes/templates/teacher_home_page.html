@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Home Page</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shring-to-fit=no">
+
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <script th:src="@{//cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="stylesheet" th:href="@{/teacher_home/teacher_home.css}">
+    <script th:src="@{/teacher_home/teacher_home.js}" th:inline="javascript"></script>
+
+</head>
+<body>
+    <!--<p>Welcome <span th:text="${#session.getAttribute('TEACHER').getName()}"></span></p>-->
+
+    <div class="container-fluid" id="top_navigation_bar">
+        <div class="row">
+            <div class="col-2">brand</div>
+            <div class="col-10">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link top_nax_item active" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link top_nav_item" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link top_nav_item" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link top_nav_item" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-2">
+                        Welcome <!--<span th:text="${#session.getAttribute('TEACHER').getName()}"></span>-->
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary" type="button" id="log_out" onclick="logout()">退出登录</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid home_middle" data-toggle="tab">
+        <div class="row">
+            <div class="col-2">
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="create_paper">生成试卷</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block" id="edit_paper">编辑试卷</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block" id="check_paper">查询试卷</button>
+                <div id="search_paper_filter" class="card">
+                    <button type="button" class="btn btn-outline-primary btn-block">Primary</button>
+                    <button type="button" class="btn btn-outline-secondary btn-block">Secondary</button>
+                    <button type="button" class="btn btn-outline-success btn-block">Success</button>
+                    <button type="button" class="btn btn-outline-danger btn-block">Danger</button>
+                    <button type="button" class="btn btn-outline-warning btn-block">Warning</button>
+                    <button type="button" class="btn btn-outline-info btn-block">Info</button>
+                </div>
+            </div>
+
+            <div class="col-10" id="my_content_panel">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid home_bottom">
+    </div>
+    <!--这里结束-->
+
+<script th:inline="javascript">
+    switch_active_item();
+</script>
+</body>
+</html>

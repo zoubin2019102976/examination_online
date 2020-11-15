@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "name": "taco.orders",
+      "type": "com.org.nenu.props.SomePro",
+      "sourceType": "com.org.nenu.props.SomePro"
+    }
+  ],
+  "properties": [
+    {
+      "name": "taco.orders.page-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.org.nenu.props.SomePro",
+      "defaultValue": 200
+    }
+  ],
+  "hints": []
+}

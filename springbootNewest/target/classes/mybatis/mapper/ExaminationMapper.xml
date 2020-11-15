@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.nenu.mapper.ExaminationMapper">
+    <resultMap id="examinationPaperResult" type="com.org.nenu.entity.ExaminationPaper">
+        <id property="id" column="id"></id>
+        <result property="specialty" column="specialty"></result>
+        <result property="paper_name" column="paper_name"></result>
+        <result property="teacher" column="teacher"></result>
+        <result property="start_time" column="start_time"></result>
+        <result property="end_time" column="end_time"></result>
+        <result property="full_marks" column="full_marks"></result>
+    </resultMap>
+
+    <insert id="insertAExaminationPaper"
+            parameterType="com.org.nenu.entity.ExaminationPaper"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO  examination(specialty, paper_name, teacher, start_time, end_time, full_marks)
+        VALUES
+        (#{specialty}, #{paper_name}, #{teacher}, #{start_time}, #{end_time}, #{full_marks})
+    </insert>
+
+    <select id="getAllExaminationPapers" resultMap="examinationPaperResult">
+        SELECT * FROM examination
+    </select>
+
+    <select id="getExaminationPapersBySpecialty" resultMap="examinationPaperResult">
+        SELECT * FROM  examination
+        WHERE specialty = #{specialty}
+    </select>
+
+    <delete id="deleteAExaminationPaperById">
+        DELETE FROM examination WHERE id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery JSONP example</title>
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+</head>
+<body>
+    <button>Send Jsonp request</button>
+    <p id="result"></p>
+    <script>
+
+        $('button').eq(0).click(function () {
+            $.getJSON('http://127.0.0.1:8080/ajax_example/jquery_jsonp_server.js?callback=?', function (data) {
+                console.log(data)
+            })
+        })
+    </script>
+</body>
+</html>

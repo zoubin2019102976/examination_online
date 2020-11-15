@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+</head>
+<body>
+<div>
+    <p>Hello, Welcome</p>
+    <p>还没做安全验证，就是必须登录的用户才能直接访问该页面，退出登录，考试相关</p>
+    <p>欢迎你, <span th:text="${session.student.stuSpecialities}"></span>专业的: <span th:text="${session.student.stuName}"></span></p>
+    <span>你有如下：<span th:text="${numOfExam}"></span>门考试</span><br>
+    <div th:if="${exams} != null">
+        <div style="border: cornflowerblue solid" th:each="exam : ${exams}">
+            <span>考试科目: </span><span th:text="${exam.examItem}"></span><br>
+            <span>考试开始时间: </span><span th:text="${exam.startTime.toLocalDateTime()}"></span><br>
+            <span>考试结束时间: </span><span th:text="${exam.endTime.toLocalDateTime()}"></span><br>
+            <span th:if="${new java.util.Date().getTime()} lt ${exam.startTime.getTime()}">
+                考试未开始
+            </span>
+            <span th:if="${new java.util.Date().getTime()} gt ${exam.startTime.getTime()} and ${new java.util.Date().getTime()} lt ${exam.endTime.getTime()}">
+                <a href="#">去考试</a>
+            </span>
+            <span th:if="${new java.util.Date().getTime()} gt ${exam.endTime.getTime()}">
+                考试已经结束
+            </span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

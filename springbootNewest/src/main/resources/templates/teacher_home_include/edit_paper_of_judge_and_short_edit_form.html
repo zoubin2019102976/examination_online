@@ -1,0 +1,31 @@
+<div class="container-fluid" id="edit_paper_of_topic_content_edit"></div>
+
+<div class="container-fluid" id="edit_paper_of_topic_content_add" style="margin-top: 20px">
+    <form>
+        <div class="form-group">
+            <label for="add_judge_short_paper_topic_description">题目描述</label>
+            <input type="text" class="form-control" id="add_judge_short_paper_topic_description" placeholder="输入该题目的题干" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="add_judge_short_paper_answer">正确答案</label>
+                <input type="text" class="form-control" id="add_judge_short_paper_answer" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="add_judge_short_paper_grade_per">题目分值</label>
+                <input type="number" class="form-control" id="add_judge_short_paper_grade_per" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="add_judge_short_paper_topic_num">题目号</label>
+                <input type="number" class="form-control" id="add_judge_short_paper_topic_num" required>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <button type="button" class="btn btn-secondary btn-block my_test_button" id="create_judge_short_submit">新增题目</button>
+            </div>
+        </div>
+    </form>
+</div>

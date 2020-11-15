@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.nenu.mapper.StudentMapper">
+    <resultMap id="studentResult" type="com.org.nenu.entity.StudentNew">
+        <id property="id" column="id"></id>
+        <result property="account_number" column="account_number"></result>
+        <result property="name" column="name"></result>
+        <result property="e_mail" column="e_mail"></result>
+        <result property="phone_number" column="phone_number"></result>
+        <result property="password" column="password"></result>
+        <result property="role" column="role"></result>
+        <!--<result property="id" column="id"></result>-->
+        <result property="specialty" column="specialty"></result>
+    </resultMap>
+    
+    <insert id="insertStudent"
+            parameterType="com.org.nenu.entity.StudentNew"
+            useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO student(account_number, name, e_mail, phone_number, password, role, specialty)
+        VALUES
+        (#{account_number}, #{name}, #{e_mail}, #{phone_number}, #{password}, #{role}, #{specialty})
+    </insert>
+    
+    <select id="getStudentByAccountNumber" resultMap="studentResult">
+        SELECT * FROM student
+        WHERE account_number = #{account_number}
+    </select>
+
+    <select id="getAllStudent" resultMap="studentResult">
+        SELECT * FROM student
+    </select>
+</mapper>

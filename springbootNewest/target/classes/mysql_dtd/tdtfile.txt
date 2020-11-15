@@ -1,0 +1,64 @@
+CREATE TABLE examination(
+    examId INT NOT NULL AUTO_INCREMENT,
+    examItem VARC NOT NULL,
+    examSpecialty VARCHAR(50) NOT NULL,
+    specialtyId INT,
+    PRIMARY KEY(examId),
+    FOREIGN KEY (specialtyId) REFERENCES specialty(speId) ON DELETE CASCADE);
+
+CREATE TABLE specialty(
+    speId INT NOT NULL AUTO_INCREMENT,
+    speName VARCHAR(50) NOT NULL,
+    PRIMARY KEY(speId));
+
+CREATE TABLE topic_judge(
+    id INT NOT NULL AUTO_INCREMENT,
+    paper_id INT NOT NULL,
+    paper_name VARCHAR(50),
+    type VARCHAR(50),
+    topic_num INT NOT NULL,
+    description VARCHAR(400),
+    answer VARCHAR(10),
+    grade_per DOUBLE,
+    flag VARCHAR(10),
+    PRIMARY KEY(id));
+
+CREATE TABLE topic_select_many(
+    id INT NOT NULL AUTO_INCREMENT,
+    paper_name VARCHAR(50),
+    paper_id INT NOT NULL,
+    type VARCHAR(50),
+    topic_num INT NOT NULL,
+    description VARCHAR(400),
+    itemA VARCHAR(300),
+    itemB VARCHAR(300),
+    itemC VARCHAR(300),
+    itemD VARCHAR(300),
+    answer VARCHAR(10),
+    grade_per DOUBLE,
+    flag VARCHAR(10),
+    PRIMARY KEY(id));
+
+CREATE TABLE topic_select_one(
+    id INT NOT NULL AUTO_INCREMENT,
+    paper_name VARCHAR(50),
+    paper_id INT NOT NULL,
+    type VARCHAR(50),
+    topic_num INT NOT NULL,
+    description VARCHAR(400),
+    itemA VARCHAR(300),
+    itemB VARCHAR(300),
+    itemC VARCHAR(300),
+    itemD VARCHAR(300),
+    answer VARCHAR(10),
+    grade_per DOUBLE,
+    flag VARCHAR(10),
+    PRIMARY KEY(id));
+
+//复制的时候，注意修改题号，试卷名等
+INSERT INTO topic_select_one(
+    paper_name, paper_id, type,
+    topic_num, description,
+    itemA, itemB, itemC, itemD,
+    answer, grade_per, flag) VALUES
+    ("软件工程导论", 5, "topic_select_one", 2, "软件结构使用的图形工具，一般采用?", "A.DFD", "B.PAD", "C.SC", "D.ER", "C", 10.0, "FALSE");

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shring-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+    <div th:insert="~{Myinclude/nav_head.html}"></div>
+
+    <div class="container">
+        <form method="post" th:action="@{/registration}" th:object="${student}">
+            <div class="form-group">
+                <label for="account_number">登录账号</label>
+                <input type="text" class="form-control" id="account_number" placeholder="2019000000" th:field="*{account_number}">
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('account_number')}"
+                      th:errors="*{account_number}"></span>
+                <span class="validationError"
+                      th:if="${FAIL_USER_EXIST} != null"
+                      th:text="${FAIL_USER_EXIST}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="account_password">密码</label>
+                <input type="password" class="form-control" id="account_password" th:field="*{password}">
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('password')}"
+                      th:errors="*{password}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="account_email">邮箱</label>
+                <input type="email" class="form-control" id="account_email" placeholder="name@example.com" th:field="*{e_mail}">
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('e_mail')}"
+                      th:errors="*{e_mail}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="account_phone_number">电话号码</label>
+                <input type="tel" class="form-control" id="account_phone_number" th:field="*{phone_number}">
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('phone_number')}"
+                      th:errors="*{phone_number}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="account_name">姓名</label>
+                <input type="text" class="form-control" id="account_name" th:field="*{name}">
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="account_specialty">专业</label>
+                <select class="form-control" id="account_specialty" th:field="*{specialty}">
+                    <option th:each="specialty: ${specialties}"
+                            th:value="${specialty.getSpecialty()}"
+                            th:text="${specialty.getSpecialty()}">
+                    </option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

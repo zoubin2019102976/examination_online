@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.nenu.mapper.TopicSelectOneMapper">
+    <resultMap id="SelectOneResult" type="com.org.nenu.entity.TopicSelectOne">
+        <id column="id" property="id"></id>
+        <result property="paper_name" column="paper_name"></result>
+        <result property="paper_id" column="paper_id"></result>
+        <result property="topic_type" column="topic_type"></result>
+        <result property="topic_num" column="topic_num"></result>
+        <result property="description" column="description"></result>
+        <result property="itemA" column="itemA"></result>
+        <result property="itemB" column="itemB"></result>
+        <result property="itemC" column="itemC"></result>
+        <result property="itemD" column="itemD"></result>
+        <result property="answer" column="answer"></result>
+        <result property="grade_per" column="grade_per"></result>
+        <result property="flag" column="flag"></result>
+    </resultMap>
+
+    <select id="getTopicSelectOneByPaperId" resultMap="SelectOneResult">
+        SELECT * FROM topic_select_one
+        WHERE paper_id = #{id}
+    </select>
+
+    <select id="getAllTopicSelectOne" resultMap="SelectOneResult">
+        SELECT * FROM topic_select_one
+    </select>
+    
+    <update id="updateASelectOneById"
+            parameterType="com.org.nenu.entity.TopicSelectOne"
+            flushCache="true"
+            statementType="PREPARED"
+            timeout="20">
+        UPDATE topic_select_one SET
+            paper_name = #{paper_name},
+            paper_id = #{paper_id},
+            topic_type = #{topic_type},
+            topic_num = #{topic_num},
+            description = #{description},
+            itemA = #{itemA},
+            itemB = #{itemB},
+            itemC = #{itemC},
+            itemD = #{itemD},
+            answer = #{answer},
+            grade_per = #{grade_per},
+            flag = #{flag}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteASelectOneById"
+            parameterType="com.org.nenu.entity.TopicSelectOne"
+            flushCache="true"
+            statementType="PREPARED"
+            timeout="20">
+        DELETE FROM topic_select_one WHERE id = #{id}
+    </delete>
+
+    <delete id="deleteASelectOneByPaperId"
+            parameterType="com.org.nenu.entity.TopicSelectOne"
+            flushCache="true"
+            statementType="PREPARED"
+            timeout="20">
+        DELETE FROM topic_select_one WHERE paper_id=#{paper_id}
+    </delete>
+
+    <insert id="addASelectOne"
+            parameterType="com.org.nenu.entity.TopicSelectOne"
+            flushCache="true"
+            statementType="PREPARED"
+            keyProperty="id"
+            useGeneratedKeys="true">
+        INSERT INTO topic_select_one(paper_name, paper_id, topic_type, topic_num, description, itemA, itemB, itemC, itemD, answer, grade_per, flag)
+        VALUES
+        (#{paper_name}, #{paper_id}, #{topic_type}, #{topic_num}, #{description}, #{itemA}, #{itemB}, #{itemC}, #{itemD}, #{answer}, #{grade_per}, #{flag})
+    </insert>
+</mapper>

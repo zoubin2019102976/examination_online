@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Index Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shring-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+
+    <div th:insert="~{Myinclude/nav_head::navbar}"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8 align-self-center">
+                <figure class="figure">
+                    <img th:src="@{/images/cat001.jpg}" class="figure-img img-fluid" alt="something missing">
+                    <figcaption class="figure-caption">A block for other thing in future</figcaption>
+                </figure>
+            </div>
+
+            <div class="col-4 align-self-center">
+                <form method="post" th:action="@{/toLogin}" th:object="${loginInfo}">
+                    <div class="form-group">
+                        <label for="account_number">Account Number</label>
+                        <input type="text" class="form-control" id="account_number" th:field="*{account_number}" aria-describedby="account_number_help">
+                        <small id="account_number_help" class="form-text text-muted">Please input your account number</small>
+                        <span class="validationError"
+                              th:if="${#fields.hasErrors('account_number')}"
+                              th:errors="*{account_number}">
+                                stuNum Error
+                        </span>
+                        <span class="validationError"
+                              th:if="${USER_NOT_EXIST} != null"
+                              th:text="${USER_NOT_EXIST}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="account_password">Password</label>
+                        <input type="password" class="form-control" id="account_password" th:field="*{password}">
+                        <span class="validationError"
+                              th:if="${#fields.hasErrors('password')}"
+                              th:errors="*{password}">
+                                password Error
+                        </span>
+                        <span class="validationError"
+                              th:if="${WRONG_PASSWORD} != null"
+                              th:text="${WRONG_PASSWORD}"></span>
+                    </div>
+
+                    <div class="form-group form-check-inline">
+                        <input class="form-check-input" type="radio" name="role" id="role_student" value="student" th:field="*{role}">
+                        <label class="form-check-label" for="role_student">Student</label>
+                    </div>
+
+                    <div class="form-group form-check-inline">
+                        <input class="form-check-input" type="radio" name="role" id="role_teacher" value="teacher" th:field="*{role}">
+                        <label class="form-check-label" for="role_teacher">Teacher</label>
+                    </div>
+
+                    <div class="form-group form-check-inline">
+                        <input class="form-check-input" type="radio" name="role" id="role_administrator" value="administrator" th:field="*{role}">
+                        <label class="form-check-label" for="role_administrator">Administrator</label>
+                    </div>
+
+                    <br>
+                    <span class="validationError"
+                          th:if="${#fields.hasErrors('role')}"
+                          th:errors="*{role}">
+                        Role Error
+                    </span>
+                    <br>
+
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    <a class="btn btn-secondary btn-block" href="registration">Register</a>
+                    <!--<span class="validationError"
+                          th:if="${WRONG_PASSWORD} != null"
+                          th:text="${WRONG_PASSWORD}"></span>
+                    <span class="validationError"
+                          th:if="${USER_NOT_EXIST} != null"
+                          th:text="${USER_NOT_EXIST}"></span>-->
+                </form>
+            </div>
+
+        </div>
+        Established locale country: <span th:text="${#locale.country}">US</span>.
+        <script th:src="@{/jquery/jquery-3.5.1.min.js}"></script>
+        <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    </div>
+    <div class="jumbotron jumbotron-fluid" style="width: 100%">
+        <div class="container-fluid">
+            <h1 class="display-4">Information of we</h1>
+            <p class="lead">Introduce something of information</p>
+        </div>
+    </div>
+</body>
+</html>

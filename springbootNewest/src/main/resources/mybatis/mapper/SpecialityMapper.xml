@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.org.nenu.mapper.SpecialtyMapper">
+    <resultMap id="getAllSpecialties" type="com.org.nenu.entity.Specialty">
+        <id property="id" column="id"></id>
+        <result property="specialty" column="specialties"></result>
+    </resultMap>
+
+    <select id="getAllSpecialties" resultMap="getAllSpecialties">
+        select * from specialty
+    </select>
+</mapper>

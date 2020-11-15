@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf test</title>
+    <style type="text/css">
+        div{
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shring-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="alert alert-primary" role="alert">
+
+    </div>
+    <!--服务器解析thymeleaf代码时，会用th:text的值替换标签体内容-->
+    <p th:text="thymeleaf框架，经过服务器处理后可以看见的内容">直接在浏览器上打开时可以看到的内容</p>
+
+    <h3>替换属性值</h3>
+    <p>还热吗？</p>
+    <input type="text" value="原始" th:value="替换为thymeleaf值热测试">
+    <br/><br/>
+    <div style="background-color: yellow" th:style="'background-color: green'"></div>
+    <br/><br/>
+    <!--<h3>访问属性域</h3>
+    <p th:text="${attrNameRequestScope}">访问请求域</p>
+    <p th:text="${#httpServletRequest.getAttribute('attrNameRequestScope')}">访问请求域的第二种方法</p>
+    <p th:text="${session.attrNameSessionScope}">取出session的值</p>
+
+    <h3>获取contextPath的值</h3>
+    <p th:text="@{/aaa/bbb/ccc}">@{}的作用时contextPath的值附加到指定地址前</p>
+
+    <h3>直接执行表达式</h3>
+    <p>[[${attrNameRequestScope}]]</p>
+    <p>[(${attrNameRequestScope})]</p>
+
+    <h3>判断字符串为空</h3>
+    <p th:if="${not #strings.isEmpty(attrNameRequestScope)}">if判断为真时输出的内容</p>
+    <p th:if="${#strings.isEmpty(attrNameRequestScope)}">if判断为假时输出的内容</p>-->
+
+    <!--为了测试集合的遍历，把集合存入请求域-->
+
+    <!--<h4>遍历集合</h4>
+    <div th:each="str: ${list}">
+        <p th:text="${str}"></p>
+    </div>-->
+
+    <h3>包含页面片段</h3>
+    <div th:insert="~{Myinclude/part::myFirstPart}"></div>
+    <div th:replace="~{Myinclude/part::mySecondPart}"></div>
+    <div th:include="~{Myinclude/part::myThirdPart}"></div>
+</body>
+</html>
