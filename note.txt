@@ -29,6 +29,7 @@ git push -u origin master
  (2)编辑冲突文件冲突位置
  (3)重新提交，更新
  (4)git log --graph --pretty=oneline --abbrev-commit  //图形化分支合并状态
+ 冲突还有一种理解方式就是：两个分支同时编辑了一个文件。
 
 6.如果合并分支使用Fast-forward模式，当删除分支时，会丢失分支信息。此时
 merge操作可以加 --no-ff参数，在merge时会生成一个新的commit,这样，从分支
