@@ -29,3 +29,5 @@ git push -u origin master
  (2)编辑冲突文件冲突位置
  (3)重新提交，更新
  (4)git log --graph --pretty=oneline --abbrev-commit  //图形化分支合并状态
+
+//branch dev
